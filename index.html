@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="StudySpark Hub — notes, practice tests, and study resources in one place.">
+  <title>StudySpark Hub — Learn smarter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-primary-view="home">
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="StudySpark Hub home"><span class="brand-mark">✦</span><span>StudySpark<span class="brand-muted">Hub</span></span></a>
+    <nav class="nav-links nav-primary-tabs" aria-label="Main navigation">
+      <a href="#home" class="active" data-main-nav="home" aria-current="page"><span class="nav-tab-icon">⌂</span><span>Home</span></a>
+      <a href="#dailyProgress" data-main-nav="track"><span class="nav-tab-icon">◷</span><span>Track</span></a>
+      <a href="#tests" data-main-nav="mock"><span class="nav-tab-icon">▤</span><span>Mock</span></a>
+    </nav>
+    <div class="top-actions"><button class="btn btn-quiet" id="profileBtn" type="button">My profile</button><button class="btn btn-quiet" id="loginBtn">Log in</button><button class="btn btn-primary" id="signupBtn">Get started <span>↗</span></button><button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">☰</button></div>
+  </header>
+
+  <main>
+    <section class="home-hero-clean" id="home" data-primary-view-section="home">
+      <div class="home-hero-copy">
+        <div class="eyebrow"><span class="pulse"></span> STUDYSPARK HUB · YOUR STUDY SPACE</div>
+        <h1>Your preparation,<br><span class="gradient-text">well organised.</span></h1>
+        <p>Choose a subject, open its chapters, revise your notes, and practise with focused tests — all in one study space.</p>
+        <div class="home-hero-pills"><span>Learn</span><span>Practise</span><span>Track progress</span></div>
+      </div>
+      <aside class="home-glance-card" aria-label="Today's study progress">
+        <div class="home-glance-top"><div><span class="home-glance-label">TODAY AT A GLANCE</span><h2>Your progress</h2></div><span class="home-local-chip"><i></i> SAVED LOCALLY</span></div>
+        <div class="home-glance-main">
+          <div class="progress-ring home-progress-ring" id="progressRing"><div class="ring-inner"><strong id="progressPercent">0%</strong><small>complete</small></div></div>
+          <div class="home-glance-copy"><strong id="goalCount">0 / 9</strong><b id="progressHeadline">Ready for your first task?</b><p id="progressMessage">Your daily checklist is waiting in Track.</p></div>
+        </div>
+        <button class="home-glance-link" type="button" data-open-view="track">Open today's checklist <span>→</span></button>
+      </aside>
+    </section>
+
+    <section class="dashboard-insights" data-primary-view-section="home" aria-label="Study activity overview">
+      <article class="insight-card study-time-insight"><div class="insight-heading"><span class="insight-icon">◷</span><div><span class="insight-kicker">YOUR STUDY TIME</span><h3>Build a steady routine</h3></div><button type="button" class="insight-view-link" id="dashboardProfileBtn">View details ↗</button></div><div class="insight-metrics"><div><strong id="dashboardTodayTime">0m</strong><span>Today</span></div><div><strong id="dashboardWeekTime">0m</strong><span>This week</span></div><div><strong id="dashboardMonthTime">0m</strong><span>This month</span></div></div><p class="insight-footnote">Active study time is counted while this page is visible and recently used.</p></article>
+      <article class="insight-card focus-insight"><div class="insight-heading"><span class="insight-icon">✦</span><div><span class="insight-kicker">TODAY'S FOCUS</span><h3>One step at a time</h3></div></div><p>Choose one chapter, finish a focused study session, then test what you remember.</p><button type="button" class="insight-action" data-open-view="track">Open daily checklist →</button></article>
+    </section>
+
+    <section class="home-launch-section" data-primary-view-section="home" aria-labelledby="homeLaunchTitle">
+      <div class="home-section-head"><div><span class="eyebrow">START HERE</span><h2 id="homeLaunchTitle">Your study tools</h2><p>Choose one place to continue. Keep the rest out of your way.</p></div></div>
+      <div class="home-launch-grid">
+        <button class="home-launch-card home-launch-library" id="reviewNotes" type="button">
+          <span class="home-launch-icon">▤</span><span class="home-launch-kicker">LEARNING</span><strong>Study Library</strong><small>Open subjects, chapters, notes and summaries.</small><span class="home-launch-arrow">↗</span>
+        </button>
+        <button class="home-launch-card home-launch-track" type="button" data-open-view="track">
+          <span class="home-launch-icon">◷</span><span class="home-launch-kicker">DAILY ROUTINE</span><strong>Daily Tracker</strong><small>Tick off your tasks and review day-wise progress.</small><span class="home-launch-arrow">↗</span>
+        </button>
+        <button class="home-launch-card home-launch-mock" id="quickQuiz" type="button">
+          <span class="home-launch-icon">▦</span><span class="home-launch-kicker">EXAM PRACTICE</span><strong>Mock Test Centre</strong><small>Full mocks, sectionals and topic-wise tests.</small><span class="home-launch-arrow">↗</span>
+        </button>
+      </div>
+    </section>
+
+<section class="section daily-plan-section primary-view-hidden" id="dailyProgress" data-primary-view-section="track">
+      <div class="section-heading daily-plan-heading">
+        <div><div class="eyebrow">YOUR DAY · YOUR CHECKLIST</div><h2>Make today's study <span class="gradient-text">count.</span></h2><p>Plan the same core routine every day, tick off each task, and use the week strip to review your consistency.</p></div>
+        <div class="daily-plan-heading-actions"><span class="daily-plan-local-note"><i></i> Saved on this device</span><button class="home-back-btn" type="button" data-open-view="home">← Back to Home</button></div>
+      </div>
+      <div class="daily-plan-shell">
+        <div class="daily-plan-topline">
+          <div class="daily-plan-date-title"><span class="daily-plan-kicker">SELECTED STUDY DAY</span><h3 id="plannerSelectedDate">Today</h3><p id="plannerDateHint">Your checklist for this day</p></div>
+          <div class="daily-plan-controls">
+            <button class="daily-date-arrow" id="plannerPrevWeek" type="button" aria-label="Previous week">←</button>
+            <button class="daily-today-btn" id="plannerToday" type="button">Today</button>
+            <button class="daily-date-arrow" id="plannerNextWeek" type="button" aria-label="Next week">→</button>
+          </div>
+        </div>
+        <div class="daily-week-strip" id="plannerWeekStrip" aria-label="Choose a day"></div>
+        <div class="daily-plan-progress">
+          <div class="daily-plan-progress-copy"><span class="daily-plan-kicker">DAY PROGRESS</span><strong id="plannerProgressCount">0 / 9 tasks done</strong><small id="plannerProgressMessage">Start with one task. Build from there.</small></div>
+          <div class="daily-plan-progress-track"><span id="plannerProgressFill" style="width:0%"></span></div>
+          <button class="daily-reset-btn" id="plannerResetDay" type="button">Reset this day</button>
+        </div>
+        <div class="daily-plan-content-grid">
+          <div class="daily-task-area">
+            <div class="daily-task-area-head"><div><span class="daily-plan-kicker">DAILY ROUTINE</span><h3>Your study checklist</h3></div><span class="daily-task-total" id="plannerTaskTotal">9 tasks</span></div>
+            <div class="daily-task-list" id="plannerTasks" aria-live="polite"></div>
+          </div>
+          <aside class="daily-plan-aside">
+            <section class="daily-aside-card gk-focus-card">
+              <div class="daily-aside-icon">◎</div><span class="daily-plan-kicker">GK FOCUS FOR THIS DAY</span><h3>Choose your GK topic</h3><p>Pick the area you plan to cover in your GK study session.</p>
+              <div class="daily-gk-topics" id="plannerGkTopics">
+                <button type="button" data-planner-gk-topic="Polity">Polity</button><button type="button" data-planner-gk-topic="History">History</button><button type="button" data-planner-gk-topic="Geography">Geography</button><button type="button" data-planner-gk-topic="Economy">Economy</button><button type="button" data-planner-gk-topic="General Science">Science</button><button type="button" data-planner-gk-topic="Criminal Law">BNS / BNSS / BSA</button>
+              </div>
+              <small class="daily-gk-hint">You can select more than one topic. Your choices are saved separately for each day.</small>
+            </section>
+            <section class="daily-aside-card daily-order-card"><span class="daily-plan-kicker">SUGGESTED FLOW</span><h3>A simple order to follow</h3><ol><li><b>Attempt</b> one full mock.</li><li><b>Analyse</b> mistakes and mark weak areas.</li><li><b>Read</b> an editorial and practise vocabulary.</li><li><b>Study</b> English and Maths in focused blocks.</li><li><b>Finish</b> Reasoning, GK and current affairs.</li></ol></section>
+            <div class="daily-save-note"><span>✓</span><div><b>Your progress stays saved</b><small>Checklist and GK choices are stored locally in this browser. Use the same browser to continue your tracker.</small></div></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section subjects-section" id="subjects" data-primary-view-section="home">
+      <div class="section-heading"><div><div class="eyebrow">CHOOSE YOUR SUBJECT</div><h2>Study by <span class="gradient-text">subject.</span></h2><p>Open a subject to explore its chapter folders, study notes, quick summaries and topic-wise practice.</p></div></div>
+      <div class="subject-grid">
+        <button class="subject-card" data-subject-filter="English"><span class="subject-symbol subject-pink">Aa</span><span class="subject-name">English</span><span class="subject-desc">Grammar, vocabulary & comprehension</span><span class="subject-arrow">↗</span></button>
+        <button class="subject-card" data-subject-filter="Maths"><span class="subject-symbol subject-violet">∑</span><span class="subject-name">Maths</span><span class="subject-desc">Arithmetic, algebra & formulas</span><span class="subject-arrow">↗</span></button>
+        <button class="subject-card" data-subject-filter="Bank Exams"><span class="subject-symbol subject-green">₹</span><span class="subject-name">Bank Exams</span><span class="subject-desc">IBPS, SBI, RRB & banking aptitude prep</span><span class="subject-arrow">↗</span></button>
+        <button class="subject-card" data-subject-filter="Computer Knowledge"><span class="subject-symbol subject-blue">⌘</span><span class="subject-name">Computer Knowledge</span><span class="subject-desc">Hardware, software & digital basics</span><span class="subject-arrow">↗</span></button>
+        <button class="subject-card" data-subject-filter="GK"><span class="subject-symbol subject-orange">◎</span><span class="subject-name">General Knowledge</span><span class="subject-desc">History, polity, science & more</span><span class="subject-arrow">↗</span></button>
+        <button class="subject-card" data-subject-filter="Reasoning"><span class="subject-symbol subject-green">◇</span><span class="subject-name">Reasoning</span><span class="subject-desc">Logic, patterns & analytical thinking</span><span class="subject-arrow">↗</span></button>
+      </div>
+    </section>
+
+    <section class="section home-resource-section" id="resources" data-primary-view-section="home">
+      <div class="section-heading"><div><div class="eyebrow">THE LEARNING LIBRARY</div><h2>Knowledge, <span class="gradient-text">organised.</span></h2><p>Starter exam notes and formula sheets. More chapters can be added whenever you are ready.</p></div><a class="text-link" href="#resources" data-open-library-link>Explore library <span>↗</span></a></div>
+      <details class="home-library-details" id="resourceLibraryDetails">
+        <summary><span class="library-summary-icon">⌕</span><span><b>Browse all study resources</b><small>Search chapters, notes, formulas and PDF guides</small></span><strong class="library-summary-action">Open library <i>＋</i></strong></summary>
+      <div class="resource-tools"><div class="search-box"><span>⌕</span><input id="resourceSearch" type="search" placeholder="Search chapters, formulas, or keywords..." aria-label="Search resources"></div><div class="filter-pills" id="filters"><button class="filter active" data-filter="All">All resources</button><button class="filter" data-filter="Notes">Notes</button><button class="filter" data-filter="PDF">PDF guides</button></div></div>
+      <div class="resource-grid" id="resourceGrid">
+        <article class="resource-card" data-subject="GK" data-category="Notes" data-search="biology cell structure revision notes science"><div class="resource-top"><span class="resource-icon icon-violet">⌘</span><span class="tag tag-violet">NOTES</span></div><h3>Cell Structure & Function</h3><p>A quick revision guide to cell parts and what they do.</p><div class="resource-meta"><span>Biology</span><span>·</span><span>8 min read</span><button class="open-resource" data-title="Cell Structure & Function" data-body="Cells are the basic structural and functional units of life. The cell membrane controls what enters and leaves the cell. The nucleus contains genetic material. Mitochondria release usable energy, while ribosomes help make proteins. Plant cells also have a cell wall, chloroplasts, and a large central vacuole.">Open notes ↗</button></div></article>
+        <article class="resource-card" data-subject="Maths" data-category="PDF" data-search="algebra formula sheet mathematics pdf equations"><div class="resource-top"><span class="resource-icon icon-blue">∑</span><span class="tag tag-blue">PDF GUIDE</span></div><h3>Algebra Formula Sheet</h3><p>Essential identities and a tidy formula reference.</p><div class="resource-meta"><span>Mathematics</span><span>·</span><span>4 pages</span><button class="open-resource" data-title="Algebra Formula Sheet" data-body="Algebra quick reference: (a+b)² = a² + 2ab + b²; (a−b)² = a² − 2ab + b²; a²−b² = (a−b)(a+b). For a linear equation ax+b=c, isolate x by subtracting b and dividing by a (when a ≠ 0). Add your own approved PDF link in the project to provide a downloadable file.">Preview guide ↗</button></div></article>
+        <article class="resource-card" data-subject="GK" data-category="Notes" data-search="history french revolution causes notes social studies"><div class="resource-top"><span class="resource-icon icon-orange">◷</span><span class="tag tag-orange">NOTES</span></div><h3>French Revolution: Overview</h3><p>Key causes, turning points, and terms to remember.</p><div class="resource-meta"><span>History</span><span>·</span><span>6 min read</span><button class="open-resource" data-title="French Revolution: Overview" data-body="Commonly taught causes include social inequality among the estates, government debt, food shortages, and Enlightenment ideas. The Estates-General met in 1789; the storming of the Bastille became a major symbol of the revolution. Events changed over time, so use your class textbook for dates and syllabus-specific detail.">Open notes ↗</button></div></article>
+        <article class="resource-card" data-subject="Maths" data-category="Notes" data-search="number system natural whole integers rational irrational prime composite divisibility factors multiples remainder"><div class="resource-top"><span class="resource-icon icon-violet">∑</span><span class="tag tag-violet">FORMULA NOTES</span></div><h3>Number System: Quick Revision</h3><p>Understand number types, factors, multiples, divisibility, HCF and LCM.</p><div class="resource-meta"><span>Maths</span><span>·</span><span>Quick revision</span><button class="open-resource" data-title="Number System: Quick Revision" data-body="Number System — Quick Revision
+
+Number types
+• Natural numbers: 1, 2, 3, …
+• Whole numbers: 0, 1, 2, 3, …
+• Integers: …, −2, −1, 0, 1, 2, …
+• Rational numbers can be written as p/q, where p and q are integers and q ≠ 0.
+• Irrational numbers cannot be expressed as a ratio of two integers, such as √2.
+
+Divisibility reminders
+• 2: last digit is even.
+• 3: sum of digits is divisible by 3.
+• 5: last digit is 0 or 5.
+• 9: sum of digits is divisible by 9.
+• 10: last digit is 0.
+
+HCF is the greatest common factor; LCM is the smallest positive common multiple. For two positive integers: HCF × LCM = product of the two integers.
+
+Example: HCF(12, 18) = 6 and LCM(12, 18) = 36; 6 × 36 = 12 × 18.">Open notes ↗</button></div></article>
+        <article class="resource-card" data-subject="Maths" data-category="Notes" data-search="percentage percent fraction decimal increase decrease discount exam maths"><div class="resource-top"><span class="resource-icon icon-blue">%</span><span class="tag tag-violet">FORMULA NOTES</span></div><h3>Percentage: Core Formulas</h3><p>Convert fractions, calculate percentage change, and solve common exam questions.</p><div class="resource-meta"><span>Maths</span><span>·</span><span>Quick revision</span><button class="open-resource" data-title="Percentage: Core Formulas" data-body="Percentage — Core Formulas
+
+Percentage = (part ÷ whole) × 100%
+Part = (percentage ÷ 100) × whole
+
+Percentage change = (change ÷ original value) × 100%
+New value after an increase of r% = original × (1 + r/100)
+New value after a decrease of r% = original × (1 − r/100)
+
+Useful conversions: 1/2 = 50%; 1/4 = 25%; 1/5 = 20%; 1/8 = 12.5%; 3/4 = 75%.
+
+Example: 15% of 240 = 0.15 × 240 = 36.
+Example: A value rises from 80 to 100. Increase = 20, so percentage increase = (20/80) × 100 = 25%.
+
+Tip: Percentage change is measured against the original value.">Open notes ↗</button></div></article>
+        <article class="resource-card" data-subject="Maths" data-category="Notes" data-search="ratio proportion direct inverse share quantity maths"><div class="resource-top"><span class="resource-icon icon-orange">↔</span><span class="tag tag-violet">FORMULA NOTES</span></div><h3>Ratio &amp; Proportion</h3><p>Compare quantities and divide a total in a given ratio.</p><div class="resource-meta"><span>Maths</span><span>·</span><span>Quick revision</span><button class="open-resource" data-title="Ratio &amp; Proportion" data-body="Ratio &amp; Proportion
+
+A ratio a:b compares a with b. Keep both quantities in compatible units before comparing.
+
+If a:b = c:d, then ad = bc (when the ratios are defined).
+Direct proportion: y = kx. If x doubles, y doubles.
+Inverse proportion: y = k/x. If x doubles, y halves.
+
+Sharing a total T in the ratio a:b:
+First share = T × a/(a+b)
+Second share = T × b/(a+b)
+
+Example: Divide 360 in the ratio 2:3. Total parts = 5; shares are 360×2/5 = 144 and 360×3/5 = 216. Check: 144 + 216 = 360.">Open notes ↗</button></div></article>
+        <article class="resource-card" data-subject="Maths" data-category="Notes" data-search="average mean arithmetic mean total number values maths"><div class="resource-top"><span class="resource-icon icon-violet">÷</span><span class="tag tag-violet">FORMULA NOTES</span></div><h3>Average: Fast Methods</h3><p>Use averages to find totals, missing values, and combined averages.</p><div class="resource-meta"><span>Maths</span><span>·</span><span>Quick revision</span><button class="open-resource" data-title="Average: Fast Methods" data-body="Average — Fast Methods
+
+Arithmetic mean = sum of observations ÷ number of observations
+Sum = average × number of observations
+
+If one value is added: new sum = old sum + added value.
+If one value is removed: new sum = old sum − removed value.
+
+Combined average = (sum of group 1 + sum of group 2) ÷ (total number of observations).
+
+Example: The average of 5 numbers is 12, so their sum is 5×12 = 60. If a sixth number, 18, is added, new average = (60+18)/6 = 13.
+
+Tip: Calculate the total first when a question asks for a missing number.">Open notes ↗</button></div></article>
+        <article class="resource-card" data-subject="Maths" data-category="Notes" data-search="profit loss cost price selling price marked price discount maths"><div class="resource-top"><span class="resource-icon icon-blue">₹</span><span class="tag tag-violet">FORMULA NOTES</span></div><h3>Profit, Loss &amp; Discount</h3><p>Memorise the base values and percentage formulas used in commercial arithmetic.</p><div class="resource-meta"><span>Maths</span><span>·</span><span>Quick revision</span><button class="open-resource" data-title="Profit, Loss &amp; Discount" data-body="Profit, Loss &amp; Discount
+
+Profit = selling price (SP) − cost price (CP), when SP &gt; CP.
+Loss = CP − SP, when CP &gt; SP.
+Profit % = (profit ÷ CP) × 100.
+Loss % = (loss ÷ CP) × 100.
+Discount = marked price (MP) − selling price (SP).
+Discount % = (discount ÷ MP) × 100.
+
+After a discount of d%: SP = MP × (1 − d/100).
+
+Example: CP = 500 and SP = 600. Profit = 100; profit percentage = 100/500 × 100 = 20%.
+
+Common trap: Profit and loss percentages are generally calculated on cost price; discount percentage is calculated on marked price.">Open notes ↗</button></div></article>
+        <article class="resource-card" data-subject="Maths" data-category="Notes" data-search="simple interest compound interest principal rate time amount finance maths"><div class="resource-top"><span class="resource-icon icon-orange">◷</span><span class="tag tag-violet">FORMULA NOTES</span></div><h3>Simple &amp; Compound Interest</h3><p>Compare simple interest with interest compounded at regular intervals.</p><div class="resource-meta"><span>Maths</span><span>·</span><span>Quick revision</span><button class="open-resource" data-title="Simple &amp; Compound Interest" data-body="Interest — Quick Reference
+
+Let P = principal, R = annual rate in percent, and T = time in years.
+
+Simple Interest (SI) = P × R × T / 100
+Amount under SI = P + SI
+
+For annual compounding: Amount A = P(1 + R/100)^T
+Compound Interest (CI) = A − P
+
+Example: P = 1,000, R = 5%, T = 2 years. SI = 1000×5×2/100 = 100; amount = 1,100. With annual compounding, A = 1000(1.05)^2 = 1,102.50, so CI = 102.50.
+
+Check the question for compounding frequency and time units before substituting.">Open notes ↗</button></div></article>
+        <article class="resource-card" data-subject="Maths" data-category="Notes" data-search="time work efficiency pipes cistern work rate maths"><div class="resource-top"><span class="resource-icon icon-violet">⌛</span><span class="tag tag-violet">FORMULA NOTES</span></div><h3>Time &amp; Work</h3><p>Solve work-rate questions using the fraction of work completed per unit time.</p><div class="resource-meta"><span>Maths</span><span>·</span><span>Quick revision</span><button class="open-resource" data-title="Time &amp; Work" data-body="Time &amp; Work
+
+If a person completes a job in x days, their one-day work rate is 1/x of the job.
+
+If A takes x days and B takes y days, working together their rate is 1/x + 1/y. Together time = xy/(x+y), assuming constant rates and a shared job.
+
+If rates are given as work per hour, add the rates to get the combined rate.
+
+Example: A takes 6 days and B takes 3 days. Combined rate = 1/6 + 1/3 = 1/2 job per day, so together they take 2 days.
+
+Tip: Use rates rather than adding the number of days.">Open notes ↗</button></div></article>
+        <article class="resource-card" data-subject="Maths" data-category="Notes" data-search="speed distance time train relative speed average speed maths"><div class="resource-top"><span class="resource-icon icon-blue">↗</span><span class="tag tag-violet">FORMULA NOTES</span></div><h3>Speed, Distance &amp; Time</h3><p>Use the speed-distance-time relationship and convert units carefully.</p><div class="resource-meta"><span>Maths</span><span>·</span><span>Quick revision</span><button class="open-resource" data-title="Speed, Distance &amp; Time" data-body="Speed, Distance &amp; Time
+
+Speed = distance ÷ time
+Distance = speed × time
+Time = distance ÷ speed
+
+Unit conversion: 1 km/h = 5/18 m/s; 1 m/s = 18/5 km/h.
+
+For equal distances travelled at speeds u and v, average speed = 2uv/(u+v), for positive speeds.
+Relative speed: add speeds when moving in opposite directions; subtract the smaller from the larger when moving in the same direction.
+
+Example: 72 km/h = 72×5/18 = 20 m/s. At 20 m/s for 30 seconds, distance = 600 m.
+
+Tip: Convert units before combining values.">Open notes ↗</button></div></article>
+        <article class="resource-card" data-subject="Maths" data-category="Notes" data-search="algebra identities square cube factorisation equations maths"><div class="resource-top"><span class="resource-icon icon-orange">x²</span><span class="tag tag-violet">FORMULA NOTES</span></div><h3>Algebraic Identities</h3><p>Revise common identities and a reliable method for simple linear equations.</p><div class="resource-meta"><span>Maths</span><span>·</span><span>Quick revision</span><button class="open-resource" data-title="Algebraic Identities" data-body="Algebraic Identities
+
+(a+b)² = a² + 2ab + b²
+(a−b)² = a² − 2ab + b²
+(a+b)(a−b) = a² − b²
+(a+b)³ = a³ + 3a²b + 3ab² + b³
+(a−b)³ = a³ − 3a²b + 3ab² − b³
+a³+b³ = (a+b)(a²−ab+b²)
+a³−b³ = (a−b)(a²+ab+b²)
+
+Linear equation: ax+b=c gives x=(c−b)/a when a ≠ 0.
+
+Example: (x+3)² = x² + 6x + 9.
+
+Tip: Keep the middle term 2ab when expanding a square.">Open notes ↗</button></div></article>
+        <article class="resource-card" data-subject="Maths" data-category="Notes" data-search="geometry mensuration perimeter area circle triangle rectangle cylinder volume surface area"><div class="resource-top"><span class="resource-icon icon-violet">△</span><span class="tag tag-violet">FORMULA NOTES</span></div><h3>Geometry &amp; Mensuration</h3><p>A compact reference for common 2D perimeter/area and 3D volume formulas.</p><div class="resource-meta"><span>Maths</span><span>·</span><span>Quick revision</span><button class="open-resource" data-title="Geometry &amp; Mensuration" data-body="Geometry &amp; Mensuration
+
+Rectangle: area = l×b; perimeter = 2(l+b).
+Square: area = a²; perimeter = 4a.
+Triangle: area = 1/2 × base × height.
+Circle: circumference = 2πr; area = πr².
+
+Cuboid: volume = lbh.
+Cube: volume = a³; total surface area = 6a².
+Cylinder: volume = πr²h; curved surface area = 2πrh; total surface area = 2πr(h+r).
+
+Use consistent units: area is in square units and volume is in cubic units. For circles, use the value of π specified by the question, if any.
+
+Example: A rectangle of length 8 cm and breadth 5 cm has area 40 cm² and perimeter 26 cm.">Open notes ↗</button></div></article>
+        <article class="resource-card" data-subject="Maths" data-category="Notes" data-search="trigonometry sine cosine tangent right triangle identities maths"><div class="resource-top"><span class="resource-icon icon-blue">∠</span><span class="tag tag-violet">FORMULA NOTES</span></div><h3>Trigonometry: Starter Sheet</h3><p>Remember the basic ratios and identities for right-triangle problems.</p><div class="resource-meta"><span>Maths</span><span>·</span><span>Quick revision</span><button class="open-resource" data-title="Trigonometry: Starter Sheet" data-body="Trigonometry — Starter Sheet
+
+For an acute angle θ in a right triangle:
+sin θ = opposite/hypotenuse
+cos θ = adjacent/hypotenuse
+tan θ = opposite/adjacent = sin θ/cos θ (when cos θ ≠ 0)
+
+Identity: sin²θ + cos²θ = 1.
+Identity: 1 + tan²θ = sec²θ, where defined.
+
+Common values:
+θ: 0°, 30°, 45°, 60°, 90°
+sin θ: 0, 1/2, √2/2, √3/2, 1
+cos θ: 1, √3/2, √2/2, 1/2, 0
+
+Example: In a right triangle, opposite = 3 and hypotenuse = 5, so sin θ = 3/5.
+
+Check whether the problem uses degrees or radians before calculating.">Open notes ↗</button></div></article>
+
+        <article class="resource-card" data-subject="English" data-category="Notes" data-search="english grammar parts of speech noun verb adjective adverb revision"><div class="resource-top"><span class="resource-icon icon-orange">Aa</span><span class="tag tag-orange">NOTES</span></div><h3>English Grammar: Parts of Speech</h3><p>A quick introduction to the building blocks of English sentences.</p><div class="resource-meta"><span>English</span><span>·</span><span>Quick revision</span><button class="open-resource" data-title="English Grammar: Parts of Speech" data-body="Parts of Speech — Quick Notes
+
+Noun: names a person, place, thing, or idea (teacher, city, book, honesty).
+Pronoun: replaces a noun (I, you, they, it).
+Verb: expresses an action or state (run, think, is).
+Adjective: describes a noun or pronoun (bright, careful).
+Adverb: modifies a verb, adjective, or another adverb (quickly, very).
+Preposition: shows a relationship (in, on, under, between).
+Conjunction: connects words or clauses (and, but, because).
+Interjection: expresses a sudden feeling (Wow!, Oh!).
+
+Example: The careful student answered quickly. Careful = adjective; answered = verb; quickly = adverb.">Open notes ↗</button></div></article>
+        <article class="resource-card" data-subject="Computer Knowledge" data-category="Notes" data-search="computer knowledge hardware software input output cpu ram storage basics"><div class="resource-top"><span class="resource-icon icon-blue">⌘</span><span class="tag tag-blue">NOTES</span></div><h3>Computer Basics: Hardware & Software</h3><p>Learn the difference between physical components and programs.</p><div class="resource-meta"><span>Computer Knowledge</span><span>·</span><span>Quick revision</span><button class="open-resource" data-title="Computer Basics: Hardware & Software" data-body="Computer Basics — Quick Notes
+
+Hardware means the physical parts of a computer, such as the keyboard, monitor, CPU components, and storage drive.
+Software means the programs and instructions that run on a computer. Examples include operating systems and word processors.
+Input devices send data to a computer: keyboard, mouse, scanner.
+Output devices present results: monitor, printer, speakers.
+RAM is temporary working memory; its contents are normally lost when power is turned off. Storage drives keep files when power is off.
+The operating system manages hardware and provides services for applications.
+
+Remember: RAM is working memory; an SSD or hard drive is long-term storage.">Open notes ↗</button></div></article>
+        <article class="resource-card" data-subject="Reasoning" data-category="Notes" data-search="reasoning number series logical patterns sequence aptitude"><div class="resource-top"><span class="resource-icon icon-violet">◇</span><span class="tag tag-violet">NOTES</span></div><h3>Reasoning: Number Series</h3><p>Spot common patterns in number sequences with a simple method.</p><div class="resource-meta"><span>Reasoning</span><span>·</span><span>Quick revision</span><button class="open-resource" data-title="Reasoning: Number Series" data-body="Number Series — Quick Notes
+
+To solve a number series, check for:
+1. A constant difference (add or subtract the same number).
+2. A changing difference (for example, +2, +4, +6).
+3. Multiplication or division patterns.
+4. Alternating patterns, where odd and even positions follow different rules.
+5. Squares, cubes, or prime numbers.
+
+Example: 3, 6, 9, 12, __. The pattern adds 3 each time, so the next number is 15.
+
+Tip: Test the simplest consistent rule first, and verify it against every term.">Open notes ↗</button></div></article>
+        <article class="resource-card" data-subject="Current Affairs" data-category="Notes" data-search="current affairs how to revise daily weekly news notes"><div class="resource-top"><span class="resource-icon icon-blue">◷</span><span class="tag tag-blue">STUDY GUIDE</span></div><h3>Current Affairs: Revision Method</h3><p>A practical structure for making concise, useful current-affairs notes.</p><div class="resource-meta"><span>Current Affairs</span><span>·</span><span>Study method</span><button class="open-resource" data-title="Current Affairs: Revision Method" data-body="Current Affairs — Study Method
+
+Create short notes under these headings: national news, international news, economy, science and technology, environment, sports, awards, and important appointments.
+For each item, record the date or month, what happened, the key people or organisations, and why it matters.
+Review notes weekly and make a small self-test from them.
+
+This is a study framework, not a live news feed. Add verified, up-to-date information from reliable sources that match your exam syllabus.">Open notes ↗</button></div></article>
+
+        <article class="resource-card" data-subject="English" data-category="Notes" data-search="english grammar parts of speech noun verb adjective adverb revision"><div class="resource-top"><span class="resource-icon icon-orange">Aa</span><span class="tag tag-orange">NOTES</span></div><h3>English Grammar: Parts of Speech</h3><p>A quick introduction to the building blocks of English sentences.</p><div class="resource-meta"><span>English</span><span>·</span><span>Quick revision</span><button class="open-resource" data-title="English Grammar: Parts of Speech" data-body="Parts of Speech — Quick Notes
+
+Noun: names a person, place, thing, or idea (teacher, city, book, honesty).
+Pronoun: replaces a noun (I, you, they, it).
+Verb: expresses an action or state (run, think, is).
+Adjective: describes a noun or pronoun (bright, careful).
+Adverb: modifies a verb, adjective, or another adverb (quickly, very).
+Preposition: shows a relationship (in, on, under, between).
+Conjunction: connects words or clauses (and, but, because).
+Interjection: expresses a sudden feeling (Wow!, Oh!).
+
+Example: The careful student answered quickly. Careful = adjective; answered = verb; quickly = adverb.">Open notes ↗</button></div></article>
+        <article class="resource-card" data-subject="Computer Knowledge" data-category="Notes" data-search="computer knowledge hardware software input output cpu ram storage basics"><div class="resource-top"><span class="resource-icon icon-blue">⌘</span><span class="tag tag-blue">NOTES</span></div><h3>Computer Basics: Hardware & Software</h3><p>Learn the difference between physical components and programs.</p><div class="resource-meta"><span>Computer Knowledge</span><span>·</span><span>Quick revision</span><button class="open-resource" data-title="Computer Basics: Hardware & Software" data-body="Computer Basics — Quick Notes
+
+Hardware means the physical parts of a computer, such as the keyboard, monitor, CPU components, and storage drive.
+Software means the programs and instructions that run on a computer. Examples include operating systems and word processors.
+Input devices send data to a computer: keyboard, mouse, scanner.
+Output devices present results: monitor, printer, speakers.
+RAM is temporary working memory; its contents are normally lost when power is turned off. Storage drives keep files when power is off.
+The operating system manages hardware and provides services for applications.
+
+Remember: RAM is working memory; an SSD or hard drive is long-term storage.">Open notes ↗</button></div></article>
+        <article class="resource-card" data-subject="Reasoning" data-category="Notes" data-search="reasoning number series logical patterns sequence aptitude"><div class="resource-top"><span class="resource-icon icon-violet">◇</span><span class="tag tag-violet">NOTES</span></div><h3>Reasoning: Number Series</h3><p>Spot common patterns in number sequences with a simple method.</p><div class="resource-meta"><span>Reasoning</span><span>·</span><span>Quick revision</span><button class="open-resource" data-title="Reasoning: Number Series" data-body="Number Series — Quick Notes
+
+To solve a number series, check for:
+1. A constant difference (add or subtract the same number).
+2. A changing difference (for example, +2, +4, +6).
+3. Multiplication or division patterns.
+4. Alternating patterns, where odd and even positions follow different rules.
+5. Squares, cubes, or prime numbers.
+
+Example: 3, 6, 9, 12, __. The pattern adds 3 each time, so the next number is 15.
+
+Tip: Test the simplest consistent rule first, and verify it against every term.">Open notes ↗</button></div></article>
+        <article class="resource-card" data-subject="Current Affairs" data-category="Notes" data-search="current affairs how to revise daily weekly news notes"><div class="resource-top"><span class="resource-icon icon-blue">◷</span><span class="tag tag-blue">STUDY GUIDE</span></div><h3>Current Affairs: Revision Method</h3><p>A practical structure for making concise, useful current-affairs notes.</p><div class="resource-meta"><span>Current Affairs</span><span>·</span><span>Study method</span><button class="open-resource" data-title="Current Affairs: Revision Method" data-body="Current Affairs — Study Method
+
+Create short notes under these headings: national news, international news, economy, science and technology, environment, sports, awards, and important appointments.
+For each item, record the date or month, what happened, the key people or organisations, and why it matters.
+Review notes weekly and make a small self-test from them.
+
+This is a study framework, not a live news feed. Add verified, up-to-date information from reliable sources that match your exam syllabus.">Open notes ↗</button></div></article>
+      </div>
+        <article class="resource-card" data-subject="Maths" data-category="Notes" data-search="simplification BODMAS brackets order operations fractions comparison ladder fractions algebra identities bar numbers recurring decimals">
+          <div class="resource-top"><span class="resource-icon icon-violet">÷</span><span class="tag tag-violet">CHAPTER NOTES</span></div>
+          <h3>Simplification: Complete Chapter</h3>
+          <p>Full detailed notes: BODMAS, algebraic identities, fraction comparison, ladder fractions, recurring decimals and exam shortcuts.</p>
+          <div class="resource-meta"><span>Maths</span><span>·</span><span>12–15 min read</span><button class="open-resource" data-title="Simplification: Complete Chapter" data-body="SIMPLIFICATION — COMPLETE CHAPTER
+Competitive-exam revision notes based on the topics visible in your uploaded chapter, with fresh examples and extra practice.
+
+1. BODMAS / ORDER OF OPERATIONS
+B — Brackets; O — Orders (powers and roots); D/M — Division and Multiplication from left to right; A/S — Addition and Subtraction from left to right. Division and multiplication have equal priority; do not always do division first. Addition and subtraction also have equal priority.
+
+Example: 18 − 2 × (3 + 4) = 18 − 2 × 7 = 18 − 14 = 4.
+Example: 24 ÷ 6 × 2 = 4 × 2 = 8 (work left to right).
+Example: 30 − 12 ÷ 3 + 2 = 30 − 4 + 2 = 28.
+
+2. TYPES OF BRACKETS
+Grouping symbols may include vinculum (a bar over an expression), ( ), { }, and [ ]. Simplify the innermost grouping first, then move outward. A vinculum is treated as a grouping bar.
+Tip: Rewrite each step clearly; avoid skipping operations when several brackets are nested.
+
+3. SIGN RULES
+(+)(+) = +; (−)(−) = +; (+)(−) = −; (−)(+) = −.
+Adding a negative number is subtraction: 9 + (−4) = 5. Subtracting a negative becomes addition: 9 − (−4) = 13.
+
+4. USEFUL ALGEBRAIC IDENTITIES
+(a + b)² = a² + 2ab + b²
+(a − b)² = a² − 2ab + b²
+(a + b)(a − b) = a² − b²
+a³ + b³ = (a + b)(a² − ab + b²)
+a³ − b³ = (a − b)(a² + ab + b²)
+(a + b + c)² = a² + b² + c² + 2ab + 2bc + 2ca
+
+Example: 49² = (50 − 1)² = 2500 − 100 + 1 = 2401.
+Example: 103 × 97 = (100 + 3)(100 − 3) = 10000 − 9 = 9991.
+Tip: Look for numbers equally above and below a round base, or expressions that match an identity.
+
+5. FRACTIONS — COMPARISON
+For positive fractions a/b and c/d, compare by cross multiplication: compare ad with bc. This avoids decimal conversion. If denominators are equal, the fraction with the larger numerator is larger. If numerators are equal and positive, the fraction with the smaller denominator is larger.
+Example: Compare 5/8 and 7/12. Cross-products: 5 × 12 = 60 and 7 × 8 = 56, so 5/8 is larger.
+If denominators differ, another method is to use the LCM and rewrite both fractions with a common denominator.
+
+6. PROPER, IMPROPER AND MIXED FRACTIONS
+Proper fraction: numerator is smaller than denominator, e.g. 3/7.
+Improper fraction: numerator is at least the denominator, e.g. 11/6.
+Mixed number: whole number plus a proper fraction, e.g. 1 5/6 = 11/6.
+To convert a mixed number to an improper fraction: (whole × denominator + numerator) / denominator.
+To convert an improper fraction to a mixed number, divide numerator by denominator; quotient is the whole part and remainder is the numerator of the fractional part.
+
+7. ADDING AND SUBTRACTING FRACTIONS
+With the same denominator, add or subtract numerators and keep the denominator. With different denominators, first use a common denominator, usually the LCM.
+Example: 2/3 + 1/4 = 8/12 + 3/12 = 11/12.
+Example: 5/6 − 1/4 = 10/12 − 3/12 = 7/12.
+For multiplication, multiply numerators and denominators; simplify by cancelling common factors first. For division, multiply by the reciprocal of the second fraction.
+
+8. LADDER / COMPLEX FRACTIONS
+For a stacked fraction such as (1/2) / (1/3), rewrite division as multiplication by the reciprocal: (1/2) × (3/1) = 3/2.
+For more complicated nested fractions, simplify from the innermost part outward and keep each numerator and denominator grouped. If several fractions are added or subtracted, find a common denominator before combining them.
+
+9. BAR NUMBERS AND RECURRING DECIMALS
+A bar over a digit or block means that the digits repeat indefinitely. For a pure recurring decimal, put the repeating block over the same number of 9s: 0.777… = 7/9; 0.363636… = 36/99 = 4/11.
+For a mixed recurring decimal, first multiply to move the non-repeating part and repeating block into alignment, then subtract the equations to eliminate the repeating tail.
+Example: Let x = 0.1666…; then 10x = 1.666… and 100x = 16.666…. Subtract: 100x − 10x = 15, so 90x = 15 and x = 1/6.
+
+10. QUICK EXAM STRATEGY
+• Scan for brackets, powers, and a possible algebraic identity before calculating.
+• Apply multiplication and division left to right; then addition and subtraction left to right.
+• For fractions, compare by cross-products or a common denominator.
+• Cancel factors before multiplying large fractions.
+• Estimate the size of the answer to catch sign or place-value mistakes.
+• Keep one line per major step to reduce careless errors.
+
+11. PRACTICE QUESTIONS
+1) 36 ÷ 6 × 3 = ?
+2) 20 − 3 × (2 + 4) = ?
+3) (x + 5)² expands to what?
+4) Which is larger: 4/7 or 5/9?
+5) Simplify 3/4 + 2/5.
+6) Convert 0.272727… into a fraction in lowest terms.
+7) Simplify 101 × 99 using an identity.
+8) Evaluate 8 − (−6) − 3.
+
+ANSWERS WITH SHORT WORKING
+1) 18 (36 ÷ 6 = 6; 6 × 3 = 18).
+2) 2 (20 − 3 × 6 = 20 − 18).
+3) x² + 10x + 25.
+4) 4/7 is larger: 4 × 9 = 36, while 5 × 7 = 35.
+5) 15/20 + 8/20 = 23/20 = 1 3/20.
+6) 27/99 = 3/11.
+7) (100 + 1)(100 − 1) = 10000 − 1 = 9999.
+8) 8 + 6 − 3 = 11.
+
+Remember: practise the method, not just the final answer. These are original revision notes; check the exact syllabus and notation used by your exam."}>Open chapter ↗</button></div>
+        </article>
+      <div class="empty-state hidden" id="emptyResources">No resources match that search. Try another keyword.</div>
+      </details>
+    </section>
+</main>
+
+  <footer><a class="brand" href="#"><span class="brand-mark">✦</span><span>StudySpark<span class="brand-muted">Hub</span></span></a><span>Made for curious minds. © <span id="year"></span></span><div><button type="button" data-open-subjects>Subjects</button><a href="#resources" data-open-library-link>Library</a><button type="button" data-footer-mock>Mock tests</button><button id="adminBtn" class="footer-admin">Admin demo</button></div></footer>
+
+  <div class="modal-backdrop hidden" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal"><button class="modal-close" id="closeModal" aria-label="Close dialog">×</button><div id="modalContent"></div></div></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
